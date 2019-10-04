@@ -1,6 +1,0 @@
-com/slksoft/training/GetAllCustomers.class
-com/slksoft/training/entity/Customer.class
-com/slksoft/training/dao/CustomerDao.class
-com/slksoft/training/entity/Gender.class
-com/slksoft/training/dao/CustomerDaoJdbcImpl.class
-com/slksoft/training/MathUtils.class
