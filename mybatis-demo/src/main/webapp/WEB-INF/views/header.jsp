@@ -18,6 +18,7 @@
 	
 	
 		<a class="btn btn-link" href="./">Home</a> |
-		<a class="btn btn-link" href="./view-products">All products</a> 
+		<a class="btn btn-link" href="./view-products">All products</a> |
+		<a class="btn btn-link" href="./add-new-product">Add new product</a>
 		
 		

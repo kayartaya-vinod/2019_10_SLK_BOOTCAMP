@@ -14,43 +14,54 @@ import com.slksoft.entity.Product;
 
 public class ProductsService {
 
-	private ProductsDao dao;
+	SqlSessionFactory sqlSessionFactory;
 
 	public ProductsService() throws IOException {
 		String resource = "mybatis-config.xml";
 		InputStream inputStream = Resources.getResourceAsStream(resource);
-		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-		SqlSession sqlSession = sqlSessionFactory.openSession();
-		dao = sqlSession.getMapper(ProductsDao.class);
+		sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+	}
+
+	public Product addNewProduct(Product product) {
+		try (SqlSession sqlSession = sqlSessionFactory.openSession(true);) {
+			ProductsDao dao = sqlSession.getMapper(ProductsDao.class);
+			dao.addNewProduct(product);
+			return product;
+		}
 	}
 
 	public List<Product> getAllProducts() {
-		return dao.getAllProducts();
+		try (SqlSession sqlSession = sqlSessionFactory.openSession();) {
+			ProductsDao dao = sqlSession.getMapper(ProductsDao.class);
+			return dao.getAllProducts();
+		}
 	}
 
 	public List<Product> getProductsByCategory(String category) {
-		return dao.getProductsByCategory(category);
+		try (SqlSession sqlSession = sqlSessionFactory.openSession();) {
+			ProductsDao dao = sqlSession.getMapper(ProductsDao.class);
+			return dao.getProductsByCategory(category);
+		}
 	}
 
 	public List<Product> getProductsByBrand(String brand) {
-		return dao.getProductsByBrand(brand);
+		try (SqlSession sqlSession = sqlSessionFactory.openSession();) {
+			ProductsDao dao = sqlSession.getMapper(ProductsDao.class);
+			return dao.getProductsByBrand(brand);
+		}
 	}
-	
+
 	public List<String> getAllBrands() {
-		return dao.getAllBrands();
+		try (SqlSession sqlSession = sqlSessionFactory.openSession();) {
+			ProductsDao dao = sqlSession.getMapper(ProductsDao.class);
+			return dao.getAllBrands();
+		}
 	}
-	
+
 	public List<String> getAllCategories() {
-		return dao.getAllCategories();
+		try (SqlSession sqlSession = sqlSessionFactory.openSession();) {
+			ProductsDao dao = sqlSession.getMapper(ProductsDao.class);
+			return dao.getAllCategories();
+		}
 	}
 }
-
-
-
-
-
-
-
-
-
-
