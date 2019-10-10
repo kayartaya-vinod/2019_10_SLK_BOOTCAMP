@@ -18,6 +18,11 @@ public interface ProductsDao {
 	@Options(useGeneratedKeys = true, keyProperty = "id")
 	public void addNewProduct(Product product);
 
+	@Select("select * from products where id=#{id}")
+	@Results({ 
+		@Result(column = "quantity_per_unit", property = "quantityPerUnit"),
+		@Result(column = "unit_price", property = "unitPrice")
+	})
 	public Product getProductById(Integer id);
 
 	public void updateProduct(Product product);

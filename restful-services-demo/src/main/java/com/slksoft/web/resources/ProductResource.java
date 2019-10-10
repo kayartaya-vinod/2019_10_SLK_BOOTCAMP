@@ -5,8 +5,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 
@@ -33,6 +36,21 @@ public class ProductResource {
 	public String info() {
 		log.info("handling request for GET /api/products in text/plain format");
 		return "This is the home of /api/products";
+	}
+	
+	@POST
+	@Produces({ "application/xml", "application/json" })
+	@Consumes({ "application/xml", "application/json" })
+	public Product addNewProduct(Product product) {
+		return service.addNewProduct(product);
+	}
+
+	// http://..../api/products/22 --> product_id = 22
+	@Path("/{product_id}")
+	@GET
+	@Produces({ "application/xml", "application/json" })
+	public Product getOneProduct(@PathParam("product_id") Integer id) {
+		return service.getProductById(id);
 	}
 
 	@GET

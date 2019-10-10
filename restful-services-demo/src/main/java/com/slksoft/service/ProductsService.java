@@ -64,4 +64,11 @@ public class ProductsService {
 			return dao.getAllCategories();
 		}
 	}
+
+	public Product getProductById(Integer id) {
+		try (SqlSession sqlSession = sqlSessionFactory.openSession();) {
+			ProductsDao dao = sqlSession.getMapper(ProductsDao.class);
+			return dao.getProductById(id);
+		}
+	}
 }
