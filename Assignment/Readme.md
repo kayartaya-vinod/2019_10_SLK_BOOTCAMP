@@ -3,15 +3,17 @@
 Create a Java Web Application to showcase a Phonebook. 
 
 
-All the pages should have a consistent look and feel, with a header and sidebar. Header shows the application name and a title. Sidebar should show 3 links "Home", "Contact list" and "Add new contact".
+Use the "contacts.sql" for the table and data.
 
-## Homepage:
+```mysql
+mysql> source d:\contacts.sql
+```
+
+All the pages should have a consistent look and feel, with a header and sidebar. Header shows the application name and a title. Sidebar should show 3 links "Home", "Contact list" and "Add new contact".
 
 The homepage should display your (author's) name, picture and a welcome message.
 
 <img src="./images/1.png">
-
-##  Contact list:
 
 On clicking the "Contact list" link/button, the user should be shown a list of all contacts as shown in the picture below:
 
