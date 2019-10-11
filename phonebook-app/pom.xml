@@ -46,7 +46,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>JaxrsDemo</finalName>
+		<finalName>phonebook-application</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>

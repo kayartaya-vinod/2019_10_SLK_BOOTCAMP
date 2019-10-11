@@ -26,4 +26,7 @@ public interface ContactsDao {
 
 	@Select("select * from contacts")
 	public List<Contact> findAll();
+
+	@Select("select * from contacts where city=#{city}")
+	public List<Contact> findByCity(String city);
 }
