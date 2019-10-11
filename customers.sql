@@ -1,9 +1,13 @@
+-- drop the database
 drop database if exists slktraining;
 
+-- new database
 create database slktraining;
 
+-- switch to the newly created database
 use slktraining;
 
+-- create the table
 create table customers (
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	name VARCHAR(50) NOT NULL,
@@ -15,6 +19,8 @@ create table customers (
 	state VARCHAR(50),
 	country VARCHAR(50)
 );
+
+-- insert 1000 rows
 insert into customers (id, name, phone, email, gender, address, city, state, country) values (1, 'Aharon Lodden', '3096419346', 'alodden0@forbes.com', 'Male', '227 David Avenue', 'Peoria', 'Illinois', 'United States');
 insert into customers (id, name, phone, email, gender, address, city, state, country) values (2, 'Carlie Strase', '4257056042', 'cstrase1@artisteer.com', 'Male', '55658 Continental Avenue', 'Seattle', 'Washington', 'United States');
 insert into customers (id, name, phone, email, gender, address, city, state, country) values (3, 'Fairfax Espinel', '3141394454', 'fespinel2@csmonitor.com', 'Male', '5 Ridgeway Trail', 'Saint Louis', 'Missouri', 'United States');
