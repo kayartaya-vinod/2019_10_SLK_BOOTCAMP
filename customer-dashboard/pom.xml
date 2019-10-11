@@ -40,6 +40,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>customer-dashboard-app</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
