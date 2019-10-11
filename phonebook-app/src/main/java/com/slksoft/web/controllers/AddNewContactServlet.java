@@ -20,7 +20,7 @@ public class AddNewContactServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		req.setAttribute("contact", new Contact());
-		req.setAttribute("title", "Edit contact details");
+		req.setAttribute("title", "Add new contact details");
 		
 		req.getRequestDispatcher("/WEB-INF/pages/contact-form.jsp").forward(req, resp);
 	}

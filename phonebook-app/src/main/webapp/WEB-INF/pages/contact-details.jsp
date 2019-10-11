@@ -13,6 +13,7 @@
 	</div>
 	<div class="col-md-7">
 		<table class="table">
+			<caption></caption>
 			<tbody>
 				<tr>
 					<th>Name</th>

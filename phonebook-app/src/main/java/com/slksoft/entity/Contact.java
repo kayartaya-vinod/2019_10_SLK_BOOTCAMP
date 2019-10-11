@@ -13,11 +13,11 @@ public class Contact {
 	private Integer id;
 	private String firstname;
 	private String lastname;
-	private String gender;
+	private String gender = "Male";
 	private String email;
 	private String phone;
-	private String city;
-	private String state;
-	private String country;
+	private String city = "Bangalore";
+	private String state = "Karnataka";
+	private String country = "India";
 	private String picture;
 }
