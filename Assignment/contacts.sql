@@ -1,5 +1,7 @@
+-- drop the database table
 drop table if exists contacts;
 
+-- create the table contacts
 create table contacts (
 	id INT primary key auto_increment,
 	firstname VARCHAR(50) not null,
@@ -12,6 +14,8 @@ create table contacts (
 	country VARCHAR(50),
 	picture VARCHAR(255)
 );
+
+-- insert 100 rows
 insert into contacts (id, firstname, lastname, gender, email, phone, city, state, country, picture) values (1, 'Marisa', 'Kinzel', 'Female', 'mkinzel0@cbsnews.com', '5187050786', 'Albany', 'New York', 'United States', 'http://kvinod.com/old_ci/randomdata/images/women/1.jpg');
 insert into contacts (id, firstname, lastname, gender, email, phone, city, state, country, picture) values (2, 'Alford', 'Antosch', 'Male', 'aantosch1@paypal.com', '5169050182', 'Port Washington', 'New York', 'United States', 'http://kvinod.com/old_ci/randomdata/images/men/2.jpg');
 insert into contacts (id, firstname, lastname, gender, email, phone, city, state, country, picture) values (3, 'Edi', 'Rooney', 'Female', 'erooney2@surveymonkey.com', '7345773914', 'Ann Arbor', 'Michigan', 'United States', 'http://kvinod.com/old_ci/randomdata/images/women/3.jpg');
