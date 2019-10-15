@@ -27,4 +27,18 @@ public class UserService {
 			dao.addNewUser(user);
 		}
 	}
+
+	public User getUserByEmail(String email) {
+		try(SqlSession session = factory.openSession()) {
+			UsersDao dao = session.getMapper(UsersDao.class);
+			return dao.findByEmail(email);
+		}
+	}
+
+	public User getUserByEmailAndPassword(String email, String password) {
+		try(SqlSession session = factory.openSession()) {
+			UsersDao dao = session.getMapper(UsersDao.class);
+			return dao.findByEmailAndPassword(email, password);
+		}
+	}
 }

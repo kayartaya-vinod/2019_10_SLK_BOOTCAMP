@@ -4,7 +4,7 @@ import java.util.logging.Logger;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.slksoft.cfg.AppConfig1;
+import com.slksoft.cfg.AppConfig4;
 import com.slksoft.dao.UserDao;
 
 public class Main1 {
@@ -18,7 +18,7 @@ public class Main1 {
 		// ClassPathXmlApplicationContext, AnnotationConfigApplicationContext.
 
 		AnnotationConfigApplicationContext ctx;
-		ctx = new AnnotationConfigApplicationContext(AppConfig1.class);
+		ctx = new AnnotationConfigApplicationContext(AppConfig4.class);
 
 		log.info("----------------- Spring container ready!");
 
