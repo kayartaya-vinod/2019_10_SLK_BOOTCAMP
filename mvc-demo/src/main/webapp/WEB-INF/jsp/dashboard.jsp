@@ -10,6 +10,8 @@
 				href="./inbox">Inbox</a>
 			<a class="list-group-item ${page=='compose'?'active':''}"
 				href="./compose">Compose</a>
+			<a class="list-group-item ${page=='sent'?'active':''}"
+				href="./sent">Sent messages</a>
 		</div>
 	</div>
 	<div class="col-md-9">

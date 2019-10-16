@@ -29,13 +29,19 @@ public class MessageService {
 		}
 	}
 
+	public List<Message> getMessagesSentBy(String email) {
+		try(SqlSession session = factory.openSession()) {
+			MessagesDao dao = session.getMapper(MessagesDao.class);
+			return dao.findBySenderEmail(email);
+		}
+	}
+	
 	public void sendMessage(Message message) {
 		try(SqlSession session = factory.openSession(true)) {
 			MessagesDao dao = session.getMapper(MessagesDao.class);
 			dao.addNewMessage(message);
 		}
 	}
-
 
 	public Message getMessage(Integer id) {
 		try(SqlSession session = factory.openSession()) {
