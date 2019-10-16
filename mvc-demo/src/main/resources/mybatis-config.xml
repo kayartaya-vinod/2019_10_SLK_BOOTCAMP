@@ -16,5 +16,6 @@
 	</environments>
 	<mappers>
 		<mapper class="com.slksoft.dao.UsersDao" />
+		<mapper class="com.slksoft.dao.MessagesDao" />
 	</mappers>
 </configuration>

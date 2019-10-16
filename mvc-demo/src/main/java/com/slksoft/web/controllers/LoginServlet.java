@@ -23,14 +23,13 @@ public class LoginServlet extends HttpServlet {
 			// not logged in
 			req.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(req, resp);
 		} else {
-			resp.sendRedirect("./dashboard");
+			resp.sendRedirect("./inbox");
 		}
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		UserService service = new UserService();
-		service.init();
 		String email = req.getParameter("email");
 		String password = req.getParameter("password");
 
@@ -41,7 +40,7 @@ public class LoginServlet extends HttpServlet {
 			req.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(req, resp);
 		} else {
 			req.getSession().setAttribute("user", user);
-			resp.sendRedirect("./dashboard");
+			resp.sendRedirect("./inbox");
 		}
 	}
 

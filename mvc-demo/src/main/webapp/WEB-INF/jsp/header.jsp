@@ -13,8 +13,15 @@
 <body>
 	<div class="alert alert-warning">
 		<div class="container">
-			<h1>MVC - Demo</h1>
-			<p class="lead">Developed by Vinod</p>
+			<h1><em>e</em>Mailer</h1>
+			<div class="row lead">
+				<div class="col">Internal Email System</div>
+				<div class="col text-right">
+					<c:if test="${user!=null}">
+					Hello ${user.name}, welcome!
+					</c:if>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="container">
@@ -27,5 +34,7 @@
 			<c:if test="${user!=null}">
 				<a href="./logout">Logout</a>
 			</c:if>
+			
+			
 		</p>
 		<div style="min-height: 400px;">

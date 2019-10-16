@@ -37,7 +37,6 @@ public class RegisterServlet extends HttpServlet {
 
 		// 2. call model method to save model data
 		UserService service = new UserService();
-		service.init();
 		service.registerNewUser(u);
 
 		// 3. store model data (if any) in some scope (request/session)

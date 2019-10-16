@@ -14,7 +14,7 @@ import com.slksoft.entity.User;
 public class UserService {
 	SqlSessionFactory factory;
 
-	public void init() throws IOException {
+	public UserService() throws IOException {
 		String resource = "mybatis-config.xml";
 		InputStream inputStream = Resources.getResourceAsStream(resource);
 		factory = new SqlSessionFactoryBuilder().build(inputStream);
