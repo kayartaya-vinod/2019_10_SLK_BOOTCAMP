@@ -4,12 +4,13 @@
 <h2>List of all customers</h2>
 
 <table class="table table-bordered table-striped table-hover">
+	<caption></caption>
 	<thead>
 		<tr>
-			<th>Name</th>
-			<th>Email address</th>
-			<th>Phone number</th>
-			<th>City</th>
+			<th id="">Name</th>
+			<th id="">Email address</th>
+			<th id="">Phone number</th>
+			<th id="">City</th>
 		</tr>
 	</thead>
 	
