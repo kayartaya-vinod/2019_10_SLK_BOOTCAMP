@@ -1,11 +1,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <table class="table">
+	<caption></caption>
 	<thead>
 		<tr>
-			<th>From</th>
-			<th>Subject</th>
-			<th>Date</th>
-			<th></th>
+			<th id="">From</th>
+			<th id="">Subject</th>
+			<th id="">Date</th>
+			<th id=""></th>
 		</tr>	
 	</thead>
 	<tbody>
@@ -14,9 +15,9 @@
 			<td>${m.from}</td>
 			<td><a href="./view-message?m=${m.id}">${m.subject}</a></td>
 			<td>${m.sentAt}</td>
-			<th>
+			<th id="">
 				<a href="./delete?m=${m.id}">
-					<i class="fa fa-trash-o"></i>
+					<em class="fa fa-trash-o"></em>
 				</a>
 			</th>
 		</tr>

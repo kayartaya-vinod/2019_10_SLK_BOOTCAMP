@@ -1,10 +1,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <table class="table">
+	<caption></caption>
 	<thead>
 		<tr>
-			<th>To</th>
-			<th>Subject</th>
-			<th>Date</th>
+			<th id="">To</th>
+			<th id="">Subject</th>
+			<th id="">Date</th>
 		</tr>	
 	</thead>
 	<tbody>

@@ -16,28 +16,28 @@
 			<caption></caption>
 			<tbody>
 				<tr>
-					<th>Name</th>
+					<th id="">Name</th>
 					<td>${contact.gender=="Male" ? "Mr." : "Ms."}
 					${contact.firstname} ${contact.lastname}</td>
 				</tr>
 				<tr>
-					<th>Email address</th>
+					<th id="">Email address</th>
 					<td>${contact.email}</td>
 				</tr>
 				<tr>
-					<th>Phone number</th>
+					<th id="">Phone number</th>
 					<td>${contact.phone}</td>
 				</tr>
 				<tr>
-					<th>City</th>
+					<th id="">City</th>
 					<td>${contact.city}</td>
 				</tr>
 				<tr>
-					<th>State</th>
+					<th id="">State</th>
 					<td>${contact.state}</td>
 				</tr>
 				<tr>
-					<th>Country</th>
+					<th id="">Country</th>
 					<td>${contact.country}</td>
 				</tr>
 			</tbody>
