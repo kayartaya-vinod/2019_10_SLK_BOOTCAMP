@@ -13,6 +13,7 @@
 		<label class="col-md-3">Name</label>
 		<div class="col-md-6">
 			<sf:input path="name" cssClass="form-control" />
+			<sf:errors path="name" cssClass="text-danger"/>
 		</div>
 	</div>
 
@@ -39,9 +40,11 @@
 
 	<div class="form-group row">
 		<label class="col-md-3">Unit price</label>
-		<div class="col-md-2">
-			<sf:input path="unitPrice" cssClass="form-control" />
+		<div class="col-md-9">
+			<sf:input path="unitPrice" cssClass="form-control" cssStyle="width: 100px;" />
+			<sf:errors path="unitPrice" cssClass="text-danger" cssStyle="font-size: .8em"/>	
 		</div>
+		
 	</div>
 
 	<div class="form-group row">
@@ -60,8 +63,9 @@
 
 	<div class="form-group row">
 		<label class="col-md-3">Discount percent</label>
-		<div class="col-md-2">
-			<sf:input path="discount" cssClass="form-control" />
+		<div class="col-md-9">
+			<sf:input path="discount" cssClass="form-control" cssStyle="width: 100px;" />
+			<sf:errors path="discount" cssClass="text-danger" cssStyle="font-size: .8em"/>
 		</div>
 	</div>
 

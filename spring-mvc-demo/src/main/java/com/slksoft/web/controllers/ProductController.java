@@ -3,18 +3,24 @@ package com.slksoft.web.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.slksoft.entity.Product;
 import com.slksoft.service.ProductService;
+import com.slksoft.web.validators.ProductValidator;
 
 @Controller // qualifies for component scan
 public class ProductController {
 
 	@Autowired
 	ProductService service;
+	
+	@Autowired
+	ProductValidator pv;
 	
 	public static final String ATTR_TITLE = "title";
 
@@ -68,7 +74,15 @@ public class ProductController {
 	}
 	
 	@PostMapping("/save-product")
-	public String saveProduct(Product p) {
+	public String saveProduct(@ModelAttribute("pr") Product p, BindingResult errors) {
+		
+		pv.validate(p, errors);
+
+		if(errors.hasErrors()) {
+			
+			return "product-form";
+		}
+		
 		if(p.getId()==null) {
 			// add new record
 			service.addNewProduct(p);

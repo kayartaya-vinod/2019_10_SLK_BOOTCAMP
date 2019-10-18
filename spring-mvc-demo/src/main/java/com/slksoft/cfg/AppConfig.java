@@ -9,11 +9,10 @@ import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
@@ -24,19 +23,19 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @EnableWebMvc
 @MapperScan({ "com.slksoft.dao" })
-@PropertySource({ "classpath:jdbc-info.properties" })
+//@PropertySource({ "classpath:jdbc-info.properties" })
 @Configuration
 @ComponentScan(basePackages = { "com.slksoft.service", "com.slksoft.web" })
 public class AppConfig implements WebMvcConfigurer, WebApplicationInitializer {
 
-	@Value("${jdbc.driver}")
-	private String driver;
-	@Value("${jdbc.url}")
-	private String url;
-	@Value("${jdbc.username}")
-	private String username;
-	@Value("${jdbc.password}")
-	private String password;
+	// @Value("${jdbc.driver}")
+	private String driver = "com.mysql.cj.jdbc.Driver";
+	// @Value("${jdbc.url}")
+	private String url = "jdbc:mysql://localhost/slktraining";
+	// @Value("${jdbc.username}")
+	private String username = "root";
+	// @Value("${jdbc.password}")
+	private String password = "Welcome#123";
 
 	
 	// this is to inform DispatcherServlet to let go of requests that it can handle to
@@ -58,6 +57,13 @@ public class AppConfig implements WebMvcConfigurer, WebApplicationInitializer {
 		servlet.addMapping("/");
 		servlet.setLoadOnStartup(1);
 		
+	}
+	
+	@Bean
+	public ResourceBundleMessageSource messageSource() {
+		ResourceBundleMessageSource bean = new ResourceBundleMessageSource();
+		bean.setBasenames("error-messages");
+		return bean;
 	}
 	
 	@Bean
