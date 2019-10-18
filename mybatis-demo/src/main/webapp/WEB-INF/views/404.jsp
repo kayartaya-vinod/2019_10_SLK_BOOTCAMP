@@ -2,7 +2,7 @@
 
 
 <h1 class="alert alert-danger">OOPS! You are looking for an invalid page.</h1>
-<img src="assets/images/404.png">
+<img src="assets/images/404.png" alt="Page not found">
 
 
 <%@include file="./footer.jsp" %>
