@@ -78,7 +78,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>phonebook-application</finalName>
+		<finalName>pms</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>

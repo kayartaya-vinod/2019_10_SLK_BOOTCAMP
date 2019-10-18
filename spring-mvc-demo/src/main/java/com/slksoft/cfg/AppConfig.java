@@ -1,5 +1,8 @@
 package com.slksoft.cfg;
 
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRegistration;
 import javax.sql.DataSource;
 
 import org.apache.commons.dbcp2.BasicDataSource;
@@ -11,6 +14,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.web.WebApplicationInitializer;
+import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -21,7 +27,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @PropertySource({ "classpath:jdbc-info.properties" })
 @Configuration
 @ComponentScan(basePackages = { "com.slksoft.service", "com.slksoft.web" })
-public class AppConfig implements WebMvcConfigurer{
+public class AppConfig implements WebMvcConfigurer, WebApplicationInitializer {
 
 	@Value("${jdbc.driver}")
 	private String driver;
@@ -38,6 +44,20 @@ public class AppConfig implements WebMvcConfigurer{
 	@Override
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
 		configurer.enable();
+	}
+	
+	@Override
+	public void onStartup(ServletContext servletContext) throws ServletException {
+
+		AnnotationConfigWebApplicationContext ctx;
+		ctx = new AnnotationConfigWebApplicationContext();
+		ctx.register(AppConfig.class);
+		
+		ServletRegistration.Dynamic servlet;
+		servlet = servletContext.addServlet("s1", new DispatcherServlet(ctx));
+		servlet.addMapping("/");
+		servlet.setLoadOnStartup(1);
+		
 	}
 	
 	@Bean

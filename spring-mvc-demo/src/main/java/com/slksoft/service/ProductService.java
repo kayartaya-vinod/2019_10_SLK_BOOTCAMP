@@ -8,25 +8,36 @@ import org.springframework.stereotype.Service;
 import com.slksoft.dao.ProductDao;
 import com.slksoft.entity.Product;
 
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
 @Service // qualified for component scan
 public class ProductService {
-	
+
 	// automatically injects an instance of ProductDao interface
 	// created by Mybatis
 	@Autowired
 	ProductDao dao;
-	
-	public ProductService() {
-		log.info("ProductService intantiated!");
-	}
-	
+
 	public List<Product> getAllProducts() {
-		log.info("dao is an instanceof {}", dao.getClass().getName());
-		log.info("returning a list of all products");
 		return dao.findAll();
+	}
+
+	public Product getProductById(Integer id) {
+		return dao.findById(id);
+	}
+
+	public void deleteProduct(Integer id) {
+		dao.deleteById(id);
+	}
+
+	public List<Product> getProductsByPriceRange(Double min, Double max) {
+		return dao.findByPriceRange(min, max);
+	}
+
+	public void addNewProduct(Product p) {
+		dao.addProduct(p);
+	}
+
+	public void updateProduct(Product p) {
+		dao.updateProduct(p);
 	}
 
 }

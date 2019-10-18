@@ -3,34 +3,34 @@
 <h2>Customer details</h2>
 
 <table class="table table-bordered">
-
+	<caption></caption>
 	<tbody>
 		<tr>
-			<th>Name</th>
+			<th id="name">Name</th>
 			<td>${customer.name}</td>
 		</tr>
 		<tr>
-			<th>Email address</th>
+			<th id="email">Email address</th>
 			<td>${customer.email}</td>
 		</tr>
 		<tr>
-			<th>Phone number</th>
+			<th id="phone">Phone number</th>
 			<td>${customer.phone}</td>
 		</tr>
 		<tr>
-			<th>Address</th>
+			<th id="address">Address</th>
 			<td>${customer.address}</td>
 		</tr>
 		<tr>
-			<th>City</th>
+			<th id="city">City</th>
 			<td>${customer.city}</td>
 		</tr>
 		<tr>
-			<th>State</th>
+			<th id="state">State</th>
 			<td>${customer.state}</td>
 		</tr>
 		<tr>
-			<th>Country</th>
+			<th id="country">Country</th>
 			<td>${customer.country}</td>
 		</tr>
 	</tbody>
