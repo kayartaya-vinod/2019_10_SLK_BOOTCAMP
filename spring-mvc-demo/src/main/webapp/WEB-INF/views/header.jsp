@@ -43,7 +43,6 @@
 			<div class="col-md-3">
 				<!-- sidebar -->
 				<a class="btn btn-block btn-primary" href="./">Home</a>
-				<a class="btn btn-block btn-primary" href="./login">Login</a>
 				<a class="btn btn-block btn-primary" href="./view-products">View products</a>
 				<a class="btn btn-block btn-primary" href="./add-new-product">Add new product</a>
 				<a class="btn btn-block btn-primary" href="./advanced-search">Advanced search</a>
