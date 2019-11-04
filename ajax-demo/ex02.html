@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Movie Browser</title>
+    <link rel="stylesheet" href="https://bootswatch.com/4/yeti/bootstrap.min.css">
+
+</head>
+
+<body>
+    <div class="alert alert-warning">
+        <h1 class="container">Movie Browser</h1>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <form name="f">
+                    <input type="text" class="form-control" id="t" autofocus="autofocus"
+                        placeholder="type and press ENTER key">
+                </form>
+                <div id="list" style="max-height: 450px; overflow: auto;"></div>
+            </div>
+            <div class="col-md-8">
+                <h3 id="title"></h3>
+                <div class="row">
+                    <div class="col-md-4" id="poster"></div>
+                    <div class="col-md-8" id="data"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var f = document.forms[0];
+        f.onsubmit = function (evt) {
+            evt.preventDefault();
+            var t = document.getElementById('t');
+            var searchTerm = t.value;
+            if (!searchTerm) return;
+
+            var url = new URL('http://www.omdbapi.com');
+            params = {
+                apikey: '3bc3c88f',
+                s: searchTerm
+            }
+            url.search = new URLSearchParams(params).toString();
+
+            fetch(url)
+                .then(data => data.json())
+                .then(data => toTable(data.Search))
+                .then(data => document.getElementById('list').innerHTML = data);
+        }
+
+        function toTable(data) {
+            if (!data || data instanceof Array !== true) return;
+
+            var rows = data.map(m => `<tr onmouseenter="showMore('${m.imdbID}')">
+                <td><img src="${m.Poster}" alt="${m.Title}" style="height: 70px"/></td>
+                <td><h4>${m.Title}</h4>
+                    <p>
+                    IMDB: <a href="https://imdb.com/title/${m.imdbID}" target="_blank">${m.imdbID}</a>    
+                    </p>
+                </td>
+            </tr>`).join('')
+            return `<table class="table table-striped">
+    <thead></thead>
+    <tbody>${rows}</tbody>
+</table>`;
+        }
+
+        function showMore(m) {
+            var url = new URL('http://www.omdbapi.com');
+            params = {
+                apikey: '3bc3c88f',
+                i: m
+            }
+            url.search = new URLSearchParams(params).toString();
+
+            fetch(url)
+                .then(data => data.json())
+                .then(data => showMovieDetails(data));
+        }
+
+        function showMovieDetails(m) {
+            console.log(m)
+            document.getElementById('poster').innerHTML =
+                `<img src="${m.Poster}" alt="${m.Title}" class="img img-responsive img-thumbnail" />`;
+            document.getElementById('title').innerHTML = m.Title;
+
+            document.getElementById('data').innerHTML = `
+            <table class="table">
+                <tr><td>Genre</td><td>${m.Genre}</td></tr>
+                <tr><td>Box office</td><td>${m.BoxOffice}</td></tr>
+                <tr><td>Year</td><td>${m.Year}</td></tr>
+                <tr><td>Actors</td><td>${m.Actors}</td></tr>
+                <tr><td>Director</td><td>${m.Director}</td></tr>
+                <tr><td>Production</td><td>${m.Production}</td></tr>
+                <tr><td>imdbRating</td><td>${m.imdbRating}</td></tr>
+                <tr><td>Plot</td><td>${m.Plot}</td></tr>
+            </table>
+            `;
+
+        }
+    </script>
+</body>
+
+</html>

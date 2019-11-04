@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ajax Demo</title>
+
+    <link rel="stylesheet" href="https://bootswatch.com/4/yeti/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="alert alert-info">
+        <h1 class="container">Ajax Demo</h1>
+    </div>
+
+    <div class="container">
+        <label for="t">Enter search term: </label>
+        <input type="text" class="form-control" id="t" autofocus="autofocus">
+        <br>
+
+        <div id="info" class="row"></div>
+    </div>
+
+    <script>
+        // by this time, DOM has button with id "btnSearch" and textfield with id "t"
+        var t = document.querySelector('#t')
+        t.onkeyup = function (evt) {
+           
+            // an object capable of making HTTP requests (asyncrhonously)
+            var xhr = new XMLHttpRequest();
+            // xhr.readyState --> 0, uninitialized (xhr does not know where to go!!)
+            // initialize xhr
+
+            var url = 'http://www.omdbapi.com/?apikey=aa9e49f&s=' + t.value;
+            xhr.open('GET', url); // xhr.readyState becomes "1"
+
+            // before the request is made, assign a job (callback) to xhr,
+            // so as to do something with the response from server.
+            xhr.onreadystatechange = function (evt) {
+                if (xhr.readyState === 4) {
+                    // xhr.responseText is available only when readyState is "4"
+                    var data = JSON.parse(xhr.responseText);
+                    if(!data || !data.Search) return;
+
+                    // data.Search --> array of 10 movie objects
+                    var images = data.Search.map(m => toCard(m));
+                    images = images.join('');
+                    document.getElementById('info').innerHTML = images;
+                }
+            };
+
+
+            xhr.send(); // sends the request to the remote HTTP server and 
+            // makes xhr.readyState to "2"
+        };
+    </script>
+
+    <script>
+        function toCard(m) {
+            console.log(m);
+            // this function accepts a movie object
+            // and returns a string representing a visual card
+            return `<div class="card col-md-3 col-sm-4 col-xs-12">
+  <img src="${m.Poster}" class="card-img-top" alt="${m.Title}">
+  <div class="card-body">
+    <h5 class="card-title">${m.Title}</h5>
+    <p class="card-text">${m.Type.toUpperCase()} ${m.Year}</p>
+    <a href="https://imdb.com/title/${m.imdbID}" target="_blank" class="btn btn-link">IMDB</a>
+  </div>
+</div>`;
+        }
+    </script>
+</body>
+
+</html>
